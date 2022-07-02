@@ -78,8 +78,11 @@ CVE-2021-34473 Microsoft Exchange Server Remote Code Execution Vulnerability. Th
 
 
 ## 6) WebShell
-
-
+* GhostWebShell (Author: Soroush Dalili (@irsdl)) only load in Ram and AV can not detect it !
+* it useful in proxylogn and proxy shell
+```
+use GhostWebShell.cs
+```
 
 #### most famous cve
 ```
