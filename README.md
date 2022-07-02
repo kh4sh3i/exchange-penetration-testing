@@ -7,9 +7,14 @@ Exchange CVE
   * https://mail.target.ir/autodiscover/autodiscover.json
   * X-CalculatedBETarget: exchange-01.target.local
 
-* exchange-version-check
+* exchange version check
   *  https://mail.target.ir/EWS/Exchange.asmx
   *  X-OWA-Version: 15.2.1118.9
+
+* get exchange version
+```python
+sudo python3 get_exchange_version.py https://mail.target.com
+```
 
 
 ## CVE-2021-34473
